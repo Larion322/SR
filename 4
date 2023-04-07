@@ -1,0 +1,55 @@
+import numpy as np
+
+def experimental_data_handler(*args):
+# Преобразование входных аргументов в numpy массив
+data = np.array(args)
+
+# Математическое ожидание (среднее арифметическое)
+mean = np.mean(data)
+
+# Дисперсия
+variance = np.var(data)
+
+# Среднеквадратическое отклонение
+std_deviation = np.sqrt(variance)
+
+# Коэффициент вариации
+coeff_of_variation = (std_deviation / mean) * 100
+
+return mean, variance, std_deviation, coeff_of_variation
+
+
+
+def sort_input_data(*args):
+list_of_str = []
+list_of_num = []
+list_of_bool = []
+list_of_other = []
+
+for arg in args:
+if isinstance(arg, str):
+list_of_str.append(arg)
+elif isinstance(arg, (int, float)):
+list_of_num.append(arg)
+elif isinstance(arg, bool):
+list_of_bool.append(arg)
+else:
+list_of_other.append(arg)
+
+return {
+'List_of_str': list_of_str,
+'List_of_num': list_of_num,
+'List_of_bool': list_of_bool,
+'List_of_other': list_of_other
+}
+
+
+
+def get_dict_element(keyword, **kwargs):
+result = []
+for key, value in kwargs.items():
+if isinstance(value, dict):
+result.extend(get_dict_element(keyword, **value))
+elif key == keyword:
+result.append(value)
+return result
