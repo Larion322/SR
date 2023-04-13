@@ -1,0 +1,27 @@
+class Doctor:
+hospital_name = "Городская больница №1"
+
+def __init__(self, name, specialization):
+
+self.name = name
+self.specialization = specialization
+self.patients = []
+
+def add_patient(self, patient_name):
+self.patients.append(patient_name)
+print(f"Пациент {patient_name} добавлен к врачу {self.name}")
+
+@staticmethod
+def get_hospital_name():
+return Doctor.hospital_name
+
+def __str__(self):
+return f"Врач {self.name}, специализация: {self.specialization}, работает в {Doctor.hospital_name}"
+
+doctor1 = Doctor("Иванов", "терапевт")
+
+doctor1.add_patient("Петров")
+
+print(doctor1)
+
+print(Doctor.get_hospital_name())
