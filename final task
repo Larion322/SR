@@ -1,0 +1,42 @@
+import random
+
+class RecipeMain:
+    medication_list = ['Ибупрофен', 'Леводопа', 'Амоксициллин', 'Эритромицин', 'Тамоксифен', 'Варфарин']
+    recipe_templates = []
+
+    def __init__(self, disease, prescribed_medicine):
+        self.disease = disease
+        self.prescribed_medicine = prescribed_medicine
+        self.generateRecipe()
+
+    def generateRecipe(self):
+        if self.prescribed_medicine not in self.medication_list:
+            self.medication_list.append(self.prescribed_medicine)
+            recipe_id = random.randint(1000, 9999)
+            self.recipe_templates.append({"Болезнь": self.disease, "Лекарство": self.prescribed_medicine, "Идентификатор рецепта": recipe_id})
+        else:
+            recipe_id = random.randint(1000, 9999)
+            self.recipe_templates.append({"Болезнь": self.disease, "Лекарство": self.prescribed_medicine, "Идентификатор рецепта": recipe_id})
+
+@classmethod
+def getRecipe(cls):
+    for recipe in cls.recipe_templates:
+        print(recipe)
+
+print('Список лекарств:', RecipeMain.medication_list)
+
+rec1 = RecipeMain('Грип', 'Амоксициллин')
+print('Первый рецепт:', RecipeMain.recipe_templates)
+
+rec2 = RecipeMain('Прип', 'Ацикловир')
+print('Второй рецепт:', RecipeMain.recipe_templates)
+
+rec3 = RecipeMain('Волчанка', 'Азатиоприн')
+print('Третий рецепт:', RecipeMain.recipe_templates)
+
+rec4 = RecipeMain('Имунодифицит', 'Азатиоприн')
+print('Четвертый рецепт:', RecipeMain.recipe_templates)
+
+print('Список лекарств:', RecipeMain.medication_list)
+
+RecipeMain.getRecipe()
