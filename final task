@@ -18,10 +18,10 @@ class RecipeMain:
             recipe_id = random.randint(1000, 9999)
             self.recipe_templates.append({"Болезнь": self.disease, "Лекарство": self.prescribed_medicine, "Идентификатор рецепта": recipe_id})
 
-@classmethod
-def getRecipe(cls):
-    for recipe in cls.recipe_templates:
-        print(recipe)
+    @classmethod
+    def getRecipe(cls):
+        for recipe in cls.recipe_templates:
+            print(recipe)
 
 print('Список лекарств:', RecipeMain.medication_list)
 
